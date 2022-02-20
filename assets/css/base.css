@@ -11,10 +11,10 @@ html {
     font-family: raleway,sans-serif;
 }
 
-a {
+/* a {
     color: #333;
     text-decoration: none;
-}
+} */
 
 .active {
     display: block !important;
@@ -35,6 +35,7 @@ a {
 }
 
 .header__category-right span,
+a,
 .header__category-left a {    
     display: block;
     font-size: 13px;
@@ -45,6 +46,7 @@ a {
     cursor: pointer;
 }
 
+a:hover,
 .header__category-right span:hover,
 .header__category-left a:hover {
     color: #17a78b;
@@ -72,6 +74,7 @@ a {
     border-radius: 5px;
     display: none;
     z-index: 99;
+    box-shadow: 0 0 10px #ccc;
 }
 
 .select-box li {
@@ -122,6 +125,7 @@ a {
     margin-top: 40px;
     margin-right: 20px;
     position: relative;
+    text-decoration: none !important;
 }
 
 .site-branding__cart::before {
@@ -171,17 +175,21 @@ a {
 
 .main-menu {
     background-color: #fbfbfb;
+    top: 0;
+    width: 100%;
+    z-index: 99;
 }
 
 .main-menu-wrap .col {
     list-style: none;
     display: flex;
     align-items: center;
-    height: 60px;
+    z-index: 99;
+    /* height: 60px; */
 }
 
 .main-menu-wrap .col li {
-    /* height: 100%; */
+    height: 100%;
 }
 
 .main-menu-active,
@@ -196,17 +204,99 @@ a {
     padding: 10px;
     color: #6e6a6a;
     font-size: 14px;
-    /* height: 100%; */
+    height: 60px;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
+    text-decoration: none;
+    margin-right: 0;
+    z-index: 100;
 }
 
 .main-menu-wrap__icon {
     display: none;
 }
 
-.active-main-menu {
-    height: 288px !important;
+.slider__item {
+    display: flex;
+    position: relative;
+}
+
+.slider__item-img {
+    width: 100%;
+    height: auto;
+}
+
+.slider__item-info {
+    position: absolute;
+    top: 26%;
+    right: 16%;
+}
+
+.slider__item-info-header {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.slider__item-info-now-text {
+    color: #666;
+    font-size: 14px;
+    width: 128px;
+    margin-top: 27px;
+    border: 1px solid #eaeaea;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.slider__item-info-now-text span {
+    /* transform: translateX(16px); */
+    margin-left: 10px;
+    transition: transform 1s ease;
+}
+
+.slider__item-info-now-icon {
+    background-color: #5a88ca;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: 28px;
+    height: 28px;
+    color: #fff;
+    transition: transform 1.5s ease;
+    z-index: 98;
+}
+
+.slider-wrap {
+    position: relative;
+    padding: 0;
+}
+
+.slider-wrap__angle-right,
+.slider-wrap__angle-left {
+    position: absolute;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #eaeaea;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none !important;
+    font-size: 20px;
+}
+
+.slider-wrap__angle-right:hover,
+.slider-wrap__angle-left:hover {
+    background-color: #5a88ca;
+    color: #fff;
+}
+
+.slider-wrap__angle-right {
+    right: 0;
 }
 
 
@@ -227,6 +317,10 @@ a {
 @media (max-width: 740px) {
     .header-wrap {
         margin-right: 0;
+    }
+
+    .site-branding {
+        height: 180px;
     }
 
     .site-branding-wrap {
@@ -250,7 +344,7 @@ a {
     }
 
     .main-menu {
-        margin-top: 20px;
+        /* margin-top: 35px; */
         position: relative;
     }
 
@@ -259,8 +353,13 @@ a {
         margin: 0;
     }
 
+    .active-main-menu {
+        /* visibility: visible !important; */
+        height: calc(60px * 7) !important;
+    }
+
     .main-menu-wrap .col {
-        /* display: none; */
+        /* visibility: hidden; */
         position: absolute;
         top: 100%;
         padding: 0;
@@ -269,12 +368,13 @@ a {
         width: 100%;
         height: 0;
         overflow: hidden;
-        transition: height .5s
+        transition: height .5s;
     }
 
     .main-menu-wrap .col li {
         width: 100%;
         background-color: #fafafaa6;
+        height: unset;
     }
 
     .main-menu-wrap__icon {
@@ -287,6 +387,7 @@ a {
     .main-menu-wrap__icon i {
         cursor: pointer;
     }
+
 }
 
 @media (min-width: 1024px) and (max-width: 1239px) {
@@ -295,5 +396,6 @@ a {
         display: flex !important;
     }
 }
+
 
 
