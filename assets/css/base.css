@@ -218,12 +218,10 @@ a:hover,
 
 .slider__item {
     position: relative;
+    left: 0;
     flex-shrink: 0;
     width: 100%;
-}
-
-.slider__item:first-child {
-    /* flex: 1; */
+    transition: left .6s ease;
 }
 
 .slider__item-img {
