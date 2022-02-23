@@ -60,9 +60,10 @@ function main() {
 
                 })
 
-                var leftPos = i * 1100
+                // var leftPos = i * 1100
 
                 sliderItem.forEach(e => {
+                    var leftPos = i * e.offsetWidth
                     e.style.left = '-' + leftPos + 'px'
                 })
                 
@@ -74,34 +75,36 @@ function main() {
         angleLeft.onclick = function(event) {
             event.preventDefault()
             sliderItem.forEach(e => {
+                const width = e.offsetWidth
                 if (e.style.left == '0px' || !e.style.left)  {
                     var pos = 0
                 } else {
                     var pos = Number.parseInt(e.style.left.slice(1, -2))
                 }
-                var posResult = pos - 1100 < 0 ? (bxPapers.length - 1) * 1100 : pos - 1100
+                var posResult = pos - width < 0 ? (bxPapers.length - 1) * width : pos - width
 
                 e.style.left = '-' + posResult + 'px'
 
-                addSelect(bxPapers, (posResult / 1100) , 'slider-wrap__bx-paper-item--active')
+                addSelect(bxPapers, (posResult / width) , 'slider-wrap__bx-paper-item--active')
             })
         }
 
         angleRight.onclick = function(event) {
             event.preventDefault()
             sliderItem.forEach(e => {
+                const width = e.offsetWidth
                 if (e.style.left == '0px' || !e.style.left)  {
                     var pos = 0
                 } else {
                     var pos = Number.parseInt(e.style.left.slice(1, -2))
                 }
             
-                var posResult = pos + 1100 > (bxPapers.length - 1) * 1100 ? 
-                                0 : pos + 1100
+                var posResult = pos + width > (bxPapers.length - 1) * width ? 
+                                0 : pos + width
 
                 e.style.left = '-' + posResult + 'px'
 
-                addSelect(bxPapers, (posResult / 1100), 'slider-wrap__bx-paper-item--active')
+                addSelect(bxPapers, (posResult / width), 'slider-wrap__bx-paper-item--active')
             })
         }
     }

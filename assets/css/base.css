@@ -11,10 +11,10 @@ html {
     font-family: raleway,sans-serif;
 }
 
-/* a {
-    color: #333;
-    text-decoration: none;
-} */
+.promo-wrap {
+    padding: 0;
+    list-style: none;
+}
 
 .active {
     display: block !important;
@@ -192,6 +192,7 @@ a:hover,
     height: 100%;
 }
 
+.blue-bg,
 .main-menu-active,
 .main-menu-wrap .col a:hover {
     background-color: #5a88ca;
@@ -313,6 +314,7 @@ a:hover,
     width: 100%;
     justify-content: center;
     top: 90%;
+    padding: 0;
 }
 
 .slider-wrap__bx-paper-item {
@@ -327,6 +329,53 @@ a:hover,
 .slider-wrap__bx-paper-item--active {
     background-color: #1bd172;
 }
+
+.yellow-bg {
+    background-color: #ffd900;
+}
+
+.red-bg {
+    background-color: salmon;
+}
+
+.green-bg {
+    background-color: #4abebd;
+}
+
+.promo {
+    margin: 40px;
+}
+
+.promo-wrap {
+    justify-content: center;
+}
+
+.promo-wrap__item {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+.promo-wrap__item i {
+    display: block;
+    font-size: 43px;
+    margin-bottom: 10px;
+}
+
+.promo-wrap__item:hover {
+    background-color: #222;
+}
+
+.promo-wrap__item-text {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
 
 @media (max-width: 1023px) {
     .header-wrap {
@@ -416,6 +465,9 @@ a:hover,
         cursor: pointer;
     }
 
+    .slider-wrap {
+        height: 299px;
+    }
 }
 
 @media (min-width: 1024px) and (max-width: 1239px) {
