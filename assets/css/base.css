@@ -24,6 +24,11 @@ html {
     background-color: #f4f4f4;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
 .header__category-left,
 .header__category-right {
     display: flex;
@@ -343,7 +348,8 @@ a:hover,
 }
 
 .promo {
-    margin: 40px;
+    padding: 40px 0;
+    background-color: #fbfbfb;
 }
 
 .promo-wrap {
@@ -374,6 +380,17 @@ a:hover,
     display: block;
     font-size: 22px;
     margin-bottom: 10px;
+}
+
+.maincontent {
+    padding: 20px 0;
+}
+
+.maincontent__header {
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    font-weight: 100;
+    margin-bottom: 50px;
 }
 
 

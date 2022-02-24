@@ -42,6 +42,44 @@ function main() {
         const angleRight = document.querySelector('.slider-wrap__angle-right')
         const sliderItem = document.querySelectorAll('.slider__item')
 
+        function moveBxPaper(element, i) {
+
+            function wrap() {
+                bxPapers.forEach((e) => {
+                    e.classList.remove('slider-wrap__bx-paper-item--active')
+    
+                })
+                // var leftPos = i * 1100
+    
+                sliderItem.forEach(e => {
+                    var leftPos = i * e.offsetWidth
+                    e.style.left = '-' + leftPos + 'px'
+                })
+                
+                element.classList.toggle('slider-wrap__bx-paper-item--active')
+                // console.log(this)
+            }
+
+            return wrap
+        }
+
+        function moveBxRight (e) {
+            const width = e.offsetWidth
+            if (e.style.left == '0px' || !e.style.left)  {
+                var pos = 0
+            } else {
+                var pos = Number.parseInt(e.style.left.slice(1, -2))
+            }
+        
+            var posResult = pos + width > (bxPapers.length - 1) * width ? 
+                            0 : pos + width
+
+            e.style.left = '-' + posResult + 'px'
+
+            addSelect(bxPapers, (posResult / width), 'slider-wrap__bx-paper-item--active')
+        }
+
+
         sliderWrap.onmouseover = function() {
             angleLeft.style.transform = 'translate(32px)'
             angleRight.style.transform = 'translate(-32px)'
@@ -53,23 +91,8 @@ function main() {
 
         bxPapers.forEach(function(e, i) {
 
-            e.onclick = function() {
+            e.onclick = moveBxPaper(e, i)
 
-                bxPapers.forEach((e) => {
-                    e.classList.remove('slider-wrap__bx-paper-item--active')
-
-                })
-
-                // var leftPos = i * 1100
-
-                sliderItem.forEach(e => {
-                    var leftPos = i * e.offsetWidth
-                    e.style.left = '-' + leftPos + 'px'
-                })
-                
-                this.classList.toggle('slider-wrap__bx-paper-item--active')
-                // console.log(this)
-            }
         })
 
         angleLeft.onclick = function(event) {
@@ -92,19 +115,7 @@ function main() {
         angleRight.onclick = function(event) {
             event.preventDefault()
             sliderItem.forEach(e => {
-                const width = e.offsetWidth
-                if (e.style.left == '0px' || !e.style.left)  {
-                    var pos = 0
-                } else {
-                    var pos = Number.parseInt(e.style.left.slice(1, -2))
-                }
-            
-                var posResult = pos + width > (bxPapers.length - 1) * width ? 
-                                0 : pos + width
-
-                e.style.left = '-' + posResult + 'px'
-
-                addSelect(bxPapers, (posResult / width), 'slider-wrap__bx-paper-item--active')
+                moveBxRight(e)  
             })
         }
     }
@@ -116,7 +127,11 @@ function main() {
         const siteBranding = document.querySelector('.site-branding')
         const header = document.querySelector('.header')
 
-        const height = siteBranding.offsetHeight + header.offsetHeight
+        var height = siteBranding.offsetHeight + header.offsetHeight
+
+        window.onresize = function() {
+            height = siteBranding.offsetHeight + header.offsetHeight
+        }
         
         document.onscroll = function() {
             if (document.documentElement.scrollTop >= height) {
